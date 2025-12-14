@@ -1,0 +1,1 @@
+-- Revenue trend analysis by month and department
