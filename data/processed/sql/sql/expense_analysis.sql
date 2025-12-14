@@ -1,0 +1,1 @@
+-- Expense breakdown and monthly trend analysis
