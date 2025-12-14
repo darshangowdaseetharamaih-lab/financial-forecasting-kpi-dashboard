@@ -1,0 +1,1 @@
+-- Financial KPI calculations including profit and liquidity ratios
