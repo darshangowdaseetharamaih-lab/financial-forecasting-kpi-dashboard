@@ -15,6 +15,12 @@ This project demonstrates end-to-end financial analysis and reporting using clou
 - data: Raw and processed datasets used for analysis
 - sql: SQL queries for KPI calculation, profitability, liquidity, and forecast variance analysis
 
+## Data & Analytics Workflow
+1. Financial data stored in AWS S3
+2. SQL-based KPI calculations performed using Amazon Athena
+3. Revenue, expense, liquidity, and forecast metrics calculated using structured SQL queries
+4. Final KPI outputs exported and visualized in Excel dashboards for decision support
+
 ## Key KPIs
 - Monthly Revenue Trend
 - Net Profit and Profit Margin
