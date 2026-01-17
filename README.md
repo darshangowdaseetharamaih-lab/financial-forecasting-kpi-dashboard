@@ -1,273 +1,329 @@
-# AI Business Analyst Copilot
-### Cost Optimization & Decision Intelligence Platform
+# Financial Forecasting & KPI Storytelling Dashboard
+### AI-Enhanced Executive Intelligence Platform
 
 <p align="center">
   <img src="https://img.shields.io/badge/AI-GPT--5.2-blue?style=for-the-badge&logo=openai" alt="GPT-5.2"/>
-  <img src="https://img.shields.io/badge/Stack-FastAPI%20%7C%20React%20%7C%20MongoDB-green?style=for-the-badge" alt="Stack"/>
-  <img src="https://img.shields.io/badge/Domain-Financial%20Analytics-orange?style=for-the-badge" alt="Domain"/>
+  <img src="https://img.shields.io/badge/Analytics-SQL%20%7C%20Excel%20%7C%20Power%20BI-green?style=for-the-badge" alt="Analytics"/>
+  <img src="https://img.shields.io/badge/Domain-Financial%20Forecasting-orange?style=for-the-badge" alt="Domain"/>
 </p>
 
 ---
 
 ## Executive Overview
 
-**AI Business Analyst Copilot** is an enterprise-grade decision intelligence platform that transforms raw financial and operational data into actionable executive insights. Powered by GPT-5.2, it serves as a virtual analyst that identifies cost optimization opportunities, detects spending anomalies, and generates CFO-ready recommendations.
+**Financial Forecasting & KPI Storytelling Dashboard** transforms raw financial data into actionable executive narratives. Unlike traditional dashboards that show *what happened*, this AI-enhanced platform explains *why it happened* and *what to do next*.
 
-> *"Turn months of analysis into minutes of insight."*
+> *"From numbers to narratives—finance that speaks to leadership."*
 
-### Key Differentiators
-- **AI-Native Analytics**: Every insight is generated through advanced LLM reasoning
-- **Executive-First Design**: Output formatted for C-suite consumption
-- **Cost Leakage Detection**: Automated identification of hidden cost drivers
-- **Decision Support**: Actionable recommendations with risk assessment
+### What Makes This Different
+
+| Traditional Dashboard | This AI-Enhanced Solution |
+|-----------------------|---------------------------|
+| Shows KPI values | Explains KPI context and drivers |
+| Displays variance | Interprets root causes |
+| Static forecasts | Dynamic scenario narratives |
+| Data dumps | CFO-ready storytelling |
+| "Here's the chart" | "Here's what it means for Q1 decisions" |
 
 ---
 
-## Business Problem
+## Business Objective
 
-Organizations face critical challenges in cost management:
+**Problem**: Finance teams spend **60% of their time** creating reports and only **40% analyzing**. Leadership receives dashboards but lacks the narrative context to make confident decisions.
 
-| Challenge | Impact |
-|-----------|--------|
-| **Data Fragmentation** | Financial data scattered across 10+ systems |
-| **Analysis Lag** | 2-4 weeks to generate cost reports manually |
-| **Hidden Cost Drivers** | 15-20% of costs unattributed or misclassified |
-| **Decision Paralysis** | Too much data, not enough insight |
-| **Stakeholder Alignment** | Finance, Ops, and Leadership see different stories |
+**Solution**: An AI-augmented forecasting system that:
+1. Automates KPI tracking and variance analysis
+2. Generates executive-ready narratives explaining performance
+3. Translates financial data into strategic recommendations
+4. Reduces reporting cycle from **5 days to 5 hours**
 
-### The Cost of Inaction
-- **$2.4M average** annual cost leakage in mid-size enterprises
-- **40+ hours/month** spent on manual reporting
-- **3-6 month delays** in identifying optimization opportunities
+### Business Impact
+- **80% reduction** in manual reporting time
+- **Faster decisions** through plain-English insights
+- **Improved accuracy** via systematic variance tracking
+- **Executive alignment** with consistent storytelling
 
 ---
 
 ## Target Stakeholders
 
-### Primary Users
+### Primary Audience
 
-| Role | Use Case | Value Delivered |
-|------|----------|-----------------|
-| **Chief Financial Officer** | Strategic cost decisions, board reporting | Executive summaries, trend analysis, risk alerts |
-| **VP Finance** | Budget variance analysis, forecasting | Automated anomaly detection, KPI dashboards |
-| **Operations Director** | Operational efficiency, resource allocation | Cost-per-unit analysis, process optimization insights |
-| **Business Analyst** | Deep-dive analysis, report generation | AI-assisted data exploration, auto-generated narratives |
+| Role | Information Need | Value Delivered |
+|------|-----------------|-----------------|
+| **Chief Financial Officer** | Strategic financial health, board-ready insights | Executive summaries, trend narratives |
+| **VP of Finance** | Forecast accuracy, variance drivers | Automated variance explanations |
+| **FP&A Manager** | Budget vs actual, reforecast inputs | AI-assisted commentary generation |
+| **Controller** | Close process, accuracy metrics | Systematic reconciliation narratives |
 
 ### Secondary Stakeholders
-- **Procurement**: Vendor cost analysis, contract optimization
-- **HR/People Ops**: Workforce cost trends, compensation benchmarking
-- **IT Finance**: Technology spend allocation, cloud cost management
+- **Business Unit Leaders**: Performance context for their P&L
+- **Board of Directors**: Quarterly narrative reports
+- **Investors**: Financial story for fundraising/reporting
 
 ---
 
 ## Data Sources
 
-The platform integrates and analyzes data from multiple enterprise systems:
-
-### Financial Data
+### Financial Systems
 ```
 ├── General Ledger (GL)
-├── Accounts Payable (AP)
-├── Accounts Receivable (AR)
-├── Budget vs Actual Reports
-├── Cost Center Allocations
-└── Intercompany Transactions
-```
-
-### Operational Data
-```
-├── Procurement & Vendor Spend
-├── Workforce Analytics (FTE, Contractors)
-├── Project Cost Tracking
-├── Asset Utilization
-└── SaaS/Cloud Consumption
+│   ├── Revenue accounts
+│   ├── COGS accounts
+│   ├── Operating expenses
+│   └── Below-the-line items
+├── Budget & Forecast
+│   ├── Annual operating plan
+│   ├── Rolling forecasts
+│   └── Scenario models
+├── Actuals
+│   ├── Monthly closes
+│   ├── YTD performance
+│   └── Prior year comparisons
+└── Operational Metrics
+    ├── Headcount data
+    ├── Sales pipeline
+    └── Unit economics
 ```
 
 ### External Benchmarks
 ```
-├── Industry Cost Ratios
-├── Peer Company Comparisons
-└── Market Index Data
+├── Industry financial ratios
+├── Peer company performance
+└── Economic indicators (CPI, interest rates)
 ```
 
 ---
 
 ## KPIs Tracked
 
-### Financial Health Indicators
-| KPI | Description | Target |
-|-----|-------------|--------|
-| **Gross Margin** | Revenue minus COGS | >40% |
-| **Operating Expense Ratio** | OpEx / Revenue | <25% |
-| **Cost Per Acquisition (CAC)** | Marketing + Sales / New Customers | Declining |
-| **Customer Lifetime Value (LTV)** | Revenue per customer over lifetime | >3x CAC |
-| **Working Capital Ratio** | Current Assets / Current Liabilities | 1.5-2.0x |
+### Revenue & Growth
+| KPI | Description | Target | Tracking |
+|-----|-------------|--------|----------|
+| **Revenue** | Total recognized revenue | Plan +5% | Monthly |
+| **Revenue Growth Rate** | MoM / YoY change | >10% YoY | Monthly |
+| **Average Revenue Per User** | Revenue / Active customers | Growing | Monthly |
+| **Net Revenue Retention** | Expansion - Churn | >110% | Quarterly |
 
-### Operational Efficiency
-| KPI | Description | Target |
-|-----|-------------|--------|
-| **Revenue Per Employee** | Total Revenue / FTE Count | Growing |
-| **Cost Variance** | Actual vs Budget | ±5% |
-| **Vendor Concentration** | Top 10 Vendor Spend / Total | <60% |
-| **Process Efficiency** | Cycle time, throughput | Improving |
-| **Churn Rate** | Customer attrition | <5% |
+### Profitability
+| KPI | Description | Target | Tracking |
+|-----|-------------|--------|----------|
+| **Gross Margin** | (Revenue - COGS) / Revenue | >40% | Monthly |
+| **Operating Margin** | Operating Income / Revenue | >15% | Monthly |
+| **EBITDA Margin** | EBITDA / Revenue | >20% | Monthly |
+| **Net Profit Margin** | Net Income / Revenue | >10% | Monthly |
 
-### AI-Generated Metrics
-- **Cost Anomaly Score**: ML-detected spending irregularities
-- **Optimization Potential**: Estimated savings opportunity
-- **Risk-Adjusted ROI**: Decision confidence scoring
+### Efficiency
+| KPI | Description | Target | Tracking |
+|-----|-------------|--------|----------|
+| **Operating Expense Ratio** | OpEx / Revenue | <25% | Monthly |
+| **Revenue Per Employee** | Revenue / FTE | Growing | Quarterly |
+| **CAC Payback Period** | CAC / (ARPU × Gross Margin) | <12 months | Monthly |
 
----
+### Liquidity & Solvency
+| KPI | Description | Target | Tracking |
+|-----|-------------|--------|----------|
+| **Current Ratio** | Current Assets / Current Liabilities | 1.5-2.0x | Monthly |
+| **Quick Ratio** | (Cash + AR) / Current Liabilities | >1.0x | Monthly |
+| **Cash Runway** | Cash / Monthly Burn | >18 months | Monthly |
+| **Debt-to-Equity** | Total Debt / Shareholder Equity | <0.5x | Quarterly |
 
-## Analytics Approach
-
-### Phase 1: Data Integration & Cleansing
-```
-Raw Data → Validation → Normalization → Cost Allocation → Analytics-Ready
-```
-
-### Phase 2: Descriptive Analytics
-- Historical trend analysis
-- Variance decomposition
-- Segment performance comparison
-
-### Phase 3: Diagnostic Analytics
-- Root cause analysis for cost increases
-- Correlation mapping between operational and financial metrics
-- Anomaly detection and flagging
-
-### Phase 4: Predictive Analytics
-- Cost forecasting models
-- Budget scenario simulation
-- Risk probability assessment
-
-### Phase 5: Prescriptive Analytics (AI-Powered)
-- GPT-5.2 generates actionable recommendations
-- Decision trees with trade-off analysis
-- Executive narrative generation
+### Forecast Accuracy
+| KPI | Description | Target | Tracking |
+|-----|-------------|--------|----------|
+| **Revenue Forecast Accuracy** | 1 - |Actual - Forecast| / Actual | >95% | Monthly |
+| **Expense Forecast Accuracy** | 1 - |Actual - Forecast| / Actual | >90% | Monthly |
+| **Forecast Bias** | (Forecast - Actual) / Actual | ±2% | Monthly |
 
 ---
 
-## How AI Generates Insights
+## Forecasting & Variance Analysis Approach
 
-### The AI Analysis Pipeline
+### Three-Tier Forecasting Framework
 
 ```
-┌─────────────────┐     ┌─────────────────┐     ┌─────────────────┐
-│   Structured    │────▶│   Context       │────▶│   GPT-5.2       │
-│   Data Input    │     │   Engineering   │     │   Analysis      │
-└─────────────────┘     └─────────────────┘     └─────────────────┘
-                                                        │
-                                                        ▼
-┌─────────────────┐     ┌─────────────────┐     ┌─────────────────┐
-│   Executive     │◀────│   Narrative     │◀────│   Insight       │
-│   Report        │     │   Generation    │     │   Extraction    │
-└─────────────────┘     └─────────────────┘     └─────────────────┘
+┌─────────────────────────────────────────────────────────────────┐
+│                    TIER 1: BASELINE FORECAST                    │
+│    Driver-based model using historical trends and seasonality   │
+│                                                                 │
+│    Revenue = f(Pipeline, Win Rate, ASP, Seasonality)            │
+│    Expenses = f(Headcount, Inflation, Contracts)                │
+└─────────────────────────────────────────────────────────────────┘
+                              │
+                              ▼
+┌─────────────────────────────────────────────────────────────────┐
+│                   TIER 2: SCENARIO ANALYSIS                     │
+│    Base Case | Upside | Downside | Stress scenarios             │
+│                                                                 │
+│    Monte Carlo simulation for range of outcomes                 │
+└─────────────────────────────────────────────────────────────────┘
+                              │
+                              ▼
+┌─────────────────────────────────────────────────────────────────┐
+│                  TIER 3: AI NARRATIVE LAYER                     │
+│    GPT-5.2 translates scenarios into executive storytelling     │
+│                                                                 │
+│    "If revenue grows 15%, here's what it means for hiring..."   │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+### Variance Analysis Methodology
+
+**Step 1: Quantify**
+```
+Variance = Actual - Forecast
+Variance % = (Actual - Forecast) / Forecast × 100
+```
+
+**Step 2: Decompose**
+- **Volume variance**: Changes in quantity/units
+- **Price variance**: Changes in rates/prices
+- **Mix variance**: Changes in product/customer mix
+- **Timing variance**: Acceleration or delays
+
+**Step 3: Explain (AI-Enhanced)**
+- AI analyzes variance patterns
+- Generates root cause narratives
+- Links to operational drivers
+- Suggests corrective actions
+
+### Forecasting Best Practices Applied
+1. **Driver-based models** over simple extrapolation
+2. **Rolling forecasts** updated monthly
+3. **Collaborative inputs** from business owners
+4. **Systematic bias tracking** and correction
+5. **AI-assisted commentary** for consistency
+
+---
+
+## How AI Generates KPI Narratives & Executive Insights
+
+### The AI Storytelling Pipeline
+
+```
+┌──────────────┐    ┌──────────────┐    ┌──────────────┐
+│  Financial   │───▶│   Context    │───▶│   GPT-5.2    │
+│  Data Input  │    │  Engineering │    │   Analysis   │
+└──────────────┘    └──────────────┘    └──────────────┘
+                                               │
+     ┌─────────────────────────────────────────┘
+     ▼
+┌──────────────┐    ┌──────────────┐    ┌──────────────┐
+│  Narrative   │───▶│   Executive  │───▶│    Board     │
+│  Generation  │    │   Summary    │    │   Package    │
+└──────────────┘    └──────────────┘    └──────────────┘
 ```
 
 ### AI Capabilities
 
-| Capability | Description |
-|------------|-------------|
-| **Executive Summarization** | Converts 50-page reports into 1-page briefs |
-| **Anomaly Narration** | Explains *why* a metric changed, not just *what* |
-| **Recommendation Engine** | Suggests specific actions with confidence scores |
-| **Risk Assessment** | Identifies assumptions and potential blind spots |
-| **Stakeholder Translation** | Adjusts language for CFO vs. Analyst audiences |
+| Capability | Input | Output |
+|------------|-------|--------|
+| **KPI Interpretation** | Revenue: $2.45M, +12.5% | "Revenue exceeded plan by 12.5%, driven primarily by enterprise expansion. This represents our strongest quarter, indicating successful go-to-market execution." |
+| **Variance Narration** | COGS: $1.47M vs $1.52M plan | "Cost of goods came in $50K favorable due to supplier renegotiation and lower shipping costs. Recommend locking in Q1 rates." |
+| **Trend Analysis** | 6-month revenue data | "Revenue trajectory shows acceleration: Q3 averaged 5.8% growth, Q4 reached 7.2%. If sustained, we'll exceed annual target by $400K." |
+| **Recommendation Engine** | Full P&L + context | "Given margin expansion and cash position, recommend accelerating 3 planned hires from Q2 to Q1." |
+
+### Example AI-Generated Insight
+
+**Input**: Monthly close data showing 15.7% net income growth
+
+**AI Output**:
+> *"Net income growth of 15.7% outpaced revenue growth of 12.5%, indicating margin expansion of approximately 80 basis points. This operational leverage reflects two key factors: (1) the restructured vendor agreements negotiated in September, and (2) disciplined headcount management with hiring 2 months behind plan. However, the hiring lag presents a risk to Q1 delivery capacity. Recommendation: Accelerate engineering hiring while maintaining current marketing spend levels."*
 
 ### Prompt Engineering Strategy
-- **Chain-of-Thought**: Step-by-step reasoning for complex analyses
-- **Few-Shot Learning**: Examples of high-quality executive outputs
-- **Persona Injection**: "Act as a McKinsey Senior Partner..."
-- **Output Structuring**: JSON schemas for consistent formatting
+
+1. **Financial Persona**: "You are a seasoned FP&A Director..."
+2. **Structured Output**: JSON schema for consistent formatting
+3. **Chain-of-Thought**: Step-by-step reasoning for complex analysis
+4. **Few-Shot Examples**: Sample narratives for quality calibration
+5. **Guardrails**: Validation against actual numbers
 
 ---
 
-## Example Executive Decisions Supported
+## Example Leadership Decisions Supported
 
-### 1. Vendor Rationalization
-> **Question**: "Should we consolidate our top 20 software vendors?"
+### 1. Quarterly Business Review
+> **Scenario**: Board meeting in 3 days, CFO needs performance narrative
 >
-> **AI Analysis**: Identified $340K annual savings opportunity through license consolidation. Risk: 2 critical vendors have no alternatives. Recommendation: Proceed with Tier 2-3 vendors first.
+> **AI Output**: 2-page executive summary with:
+> - Revenue/margin trends with context
+> - Forecast accuracy assessment
+> - Top 3 risks and mitigations
+> - Recommended board talking points
 
-### 2. Workforce Cost Optimization
-> **Question**: "Where can we reduce labor costs without impacting delivery?"
+### 2. Budget Reallocation
+> **Scenario**: Marketing ROI declining, Product showing momentum
 >
-> **AI Analysis**: Contractor spend increased 45% YoY in Engineering. Converting 12 long-term contractors to FTE saves $180K annually with improved retention.
+> **AI Analysis**: "Marketing CAC increased 23% while product-led signups grew 67%. Analysis suggests reallocating $200K from paid acquisition to product investment yields higher ROI."
 
-### 3. Budget Reallocation
-> **Question**: "Given Q3 results, how should we adjust Q4 budget?"
+### 3. Hiring Decision
+> **Scenario**: Revenue ahead of plan, should we accelerate hiring?
 >
-> **AI Analysis**: Marketing ROI declined 23% while Product-led growth increased 67%. Recommend shifting $500K from paid acquisition to product investment.
+> **AI Output**: "Current revenue supports 8 additional hires without impacting runway. However, forecast variance suggests waiting until Q1 close for confirmation. Recommend: Approve 4 hires now, 4 contingent on January actuals."
 
-### 4. Cost Center Performance
-> **Question**: "Which business units are over/under-performing on efficiency?"
+### 4. Cash Management
+> **Scenario**: Interest rates rising, evaluate cash strategy
 >
-> **AI Analysis**: APAC Operations: 18% above benchmark. EMEA Sales: 34% below benchmark. Drill-down reveals headcount timing vs. revenue recognition mismatch.
+> **AI Analysis**: "With $4.2M cash and 18-month runway, moving $2M to 6-month T-bills at 5.2% yields $52K annual return vs. current 0.5% savings rate. Risk: 6-month liquidity lock."
 
 ---
 
-## Tools & Tech Stack
+## Tech Stack
 
-### Backend Infrastructure
+### Analytics Layer
 | Component | Technology | Purpose |
 |-----------|------------|---------|
-| API Server | FastAPI (Python) | High-performance async endpoints |
-| Database | MongoDB | Flexible document storage |
-| AI Engine | OpenAI GPT-5.2 | Insight generation |
-| PDF Engine | ReportLab | Executive report generation |
+| **Query Engine** | SQL (Athena-style) | Data extraction and transformation |
+| **Modeling** | Excel / Google Sheets | Financial models and scenarios |
+| **Visualization** | Power BI / React Dashboard | Interactive KPI display |
 
-### Frontend Application
+### AI Layer
 | Component | Technology | Purpose |
 |-----------|------------|---------|
-| Framework | React 19 | Modern UI components |
-| Styling | Tailwind CSS | Utility-first design |
-| Components | Shadcn/UI | Enterprise-grade UI kit |
-| Charts | Recharts | Interactive data visualization |
-| Animation | Framer Motion | Polished interactions |
+| **LLM Engine** | OpenAI GPT-5.2 | Narrative generation |
+| **Integration** | Emergent AI Platform | API orchestration |
+| **Prompt Management** | Custom templates | Consistent output quality |
 
-### Data & Analytics
+### Infrastructure
 | Component | Technology | Purpose |
 |-----------|------------|---------|
-| Data Processing | Pandas, NumPy | ETL and transformations |
-| Visualization | Recharts, D3.js | Dashboard charts |
-| Export | jsPDF, html2canvas | Client-side reporting |
+| **Backend** | FastAPI (Python) | API services |
+| **Database** | MongoDB | Data storage |
+| **Frontend** | React + Recharts | Dashboard UI |
+| **Documentation** | GitHub | Version control |
 
-### DevOps & Infrastructure
-| Component | Technology | Purpose |
-|-----------|------------|---------|
-| Containerization | Docker | Consistent deployments |
-| Orchestration | Kubernetes | Scalable infrastructure |
-| CI/CD | GitHub Actions | Automated pipelines |
+### Data Flow
+```
+Source Systems → SQL Queries → Data Model → AI Analysis → Executive Output
+```
 
 ---
 
 ## Project Structure
 
 ```
-ai-business-analyst-copilot/
-├── backend/
-│   ├── server.py           # FastAPI application
-│   ├── requirements.txt    # Python dependencies
-│   └── .env               # Environment configuration
-├── frontend/
-│   ├── src/
-│   │   ├── pages/         # Dashboard views
-│   │   ├── components/    # UI components
-│   │   └── App.js        # Application entry
-│   └── package.json       # Node dependencies
+financial-forecasting-kpi-dashboard/
+├── dashboard/
+│   └── screenshots/           # Dashboard visuals
 ├── data/
-│   └── sample_data.json   # Demo datasets
+│   ├── sample_financials.csv  # Demo data
+│   └── kpi_definitions.md     # KPI documentation
 ├── sql/
-│   └── queries.sql        # Analytics queries
-├── dashboards/
-│   └── screenshots/       # Dashboard visuals
+│   ├── revenue_analysis.sql   # Revenue queries
+│   ├── variance_analysis.sql  # Variance calculations
+│   └── kpi_calculations.sql   # KPI formulas
 ├── ai_summaries/
-│   ├── executive_summary.md
-│   └── recommendations.md
+│   ├── monthly_executive_summary.md
+│   ├── forecast_variance_insights.md
+│   └── quarterly_board_narrative.md
 ├── docs/
-│   ├── dashboard_explanation.md
-│   └── architecture.md
+│   ├── dashboard_narrative.md
+│   ├── forecasting_methodology.md
+│   └── kpi_dictionary.md
+├── backend/
+│   └── server.py              # API endpoints
+├── frontend/
+│   └── src/                   # React dashboard
 └── README.md
 ```
 
@@ -276,19 +332,19 @@ ai-business-analyst-copilot/
 ## Getting Started
 
 ### Prerequisites
-- Node.js 18+
-- Python 3.11+
-- MongoDB
+- Python 3.11+ (for AI integration)
+- Node.js 18+ (for dashboard)
+- SQL client (for queries)
 
 ### Quick Start
 ```bash
 # Clone repository
-git clone https://github.com/yourusername/ai-business-analyst-copilot.git
+git clone https://github.com/yourusername/financial-forecasting-kpi-dashboard.git
 
 # Backend setup
 cd backend
 pip install -r requirements.txt
-python -m uvicorn server:app --reload
+uvicorn server:app --reload
 
 # Frontend setup
 cd frontend
@@ -296,21 +352,46 @@ yarn install
 yarn start
 ```
 
-### Load Sample Data
-Navigate to **Data Management** → Click **"Load Sample Data"**
+### Generate AI Insights
+Navigate to **AI Insights** → Enter financial context → Click **Generate**
+
+---
+
+## Sample Outputs
+
+### Monthly Executive Summary
+See: [`ai_summaries/monthly_executive_summary.md`](ai_summaries/monthly_executive_summary.md)
+
+### Forecast Variance Analysis
+See: [`ai_summaries/forecast_variance_insights.md`](ai_summaries/forecast_variance_insights.md)
+
+### Dashboard Explanation
+See: [`docs/dashboard_narrative.md`](docs/dashboard_narrative.md)
 
 ---
 
 ## Live Demo
 
-🔗 **[View Live Application](https://your-demo-url.com)**
+🔗 **[View Live Dashboard](https://your-demo-url.com)**
+
+---
+
+## Evolution of This Project
+
+| Version | Features | Date |
+|---------|----------|------|
+| v1.0 | SQL queries + Excel models | 2024 |
+| v2.0 | Power BI dashboard | 2024 |
+| **v3.0** | **AI-enhanced narratives (Current)** | **2025** |
+
+This project demonstrates progression from traditional analytics to AI-augmented financial intelligence.
 
 ---
 
 ## Author
 
 **[Your Name]**  
-Data Analyst | AI Solutions Architect
+Financial Analyst | AI Solutions Architect
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-blue?style=flat&logo=linkedin)](https://linkedin.com/in/yourprofile)
 [![Portfolio](https://img.shields.io/badge/Portfolio-Visit-green?style=flat&logo=google-chrome)](https://yourportfolio.com)
@@ -324,5 +405,5 @@ MIT License - See [LICENSE](LICENSE) for details.
 ---
 
 <p align="center">
-  <i>Built with ❤️ for data-driven decision makers</i>
+  <i>Finance that tells a story, powered by AI</i>
 </p>
