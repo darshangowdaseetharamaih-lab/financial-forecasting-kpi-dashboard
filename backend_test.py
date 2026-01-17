@@ -1,20 +1,28 @@
+#!/usr/bin/env python3
+"""
+Financial Forecasting Dashboard - Backend API Tests
+==================================================
+Comprehensive testing of all backend endpoints for the Financial Forecasting & KPI Dashboard.
+"""
+
 import requests
 import sys
 import json
 from datetime import datetime
 
-class DataAnalyticsAPITester:
+class FinancialDashboardTester:
     def __init__(self, base_url="https://data-to-decision.preview.emergentagent.com"):
         self.base_url = base_url
         self.api_url = f"{base_url}/api"
         self.tests_run = 0
         self.tests_passed = 0
-        self.failed_tests = []
+        self.sample_run_id = None
 
-    def run_test(self, name, method, endpoint, expected_status, data=None, timeout=30):
+    def run_test(self, name, method, endpoint, expected_status, data=None, headers=None):
         """Run a single API test"""
-        url = f"{self.api_url}/{endpoint}"
-        headers = {'Content-Type': 'application/json'}
+        url = f"{self.api_url}/{endpoint}" if endpoint else f"{self.api_url}/"
+        if headers is None:
+            headers = {'Content-Type': 'application/json'}
 
         self.tests_run += 1
         print(f"\n🔍 Testing {name}...")
@@ -22,278 +30,273 @@ class DataAnalyticsAPITester:
         
         try:
             if method == 'GET':
-                response = requests.get(url, headers=headers, timeout=timeout)
+                response = requests.get(url, headers=headers, timeout=30)
             elif method == 'POST':
-                response = requests.post(url, json=data, headers=headers, timeout=timeout)
+                if data:
+                    response = requests.post(url, json=data, headers=headers, timeout=30)
+                else:
+                    response = requests.post(url, headers=headers, timeout=30)
             elif method == 'DELETE':
-                response = requests.delete(url, headers=headers, timeout=timeout)
+                response = requests.delete(url, headers=headers, timeout=30)
 
+            print(f"   Status: {response.status_code}")
+            
             success = response.status_code == expected_status
             if success:
                 self.tests_passed += 1
                 print(f"✅ Passed - Status: {response.status_code}")
+                
+                # Try to parse JSON response
                 try:
-                    response_data = response.json()
-                    if isinstance(response_data, list):
-                        print(f"   Response: List with {len(response_data)} items")
-                    elif isinstance(response_data, dict):
-                        print(f"   Response keys: {list(response_data.keys())}")
+                    json_response = response.json()
+                    if isinstance(json_response, dict):
+                        print(f"   Response keys: {list(json_response.keys())}")
+                    elif isinstance(json_response, list):
+                        print(f"   Response: List with {len(json_response)} items")
+                    return True, json_response
                 except:
-                    print(f"   Response: Non-JSON or empty")
+                    return True, response.text
             else:
                 print(f"❌ Failed - Expected {expected_status}, got {response.status_code}")
                 try:
                     error_detail = response.json()
                     print(f"   Error: {error_detail}")
                 except:
-                    print(f"   Error: {response.text[:200]}")
-                self.failed_tests.append({
-                    'name': name,
-                    'expected': expected_status,
-                    'actual': response.status_code,
-                    'endpoint': endpoint
-                })
-
-            return success, response.json() if success and response.content else {}
+                    print(f"   Error: {response.text}")
+                return False, {}
 
         except requests.exceptions.Timeout:
-            print(f"❌ Failed - Request timeout after {timeout}s")
-            self.failed_tests.append({
-                'name': name,
-                'error': 'Timeout',
-                'endpoint': endpoint
-            })
+            print(f"❌ Failed - Request timeout (30s)")
             return False, {}
         except Exception as e:
             print(f"❌ Failed - Error: {str(e)}")
-            self.failed_tests.append({
-                'name': name,
-                'error': str(e),
-                'endpoint': endpoint
-            })
             return False, {}
 
-    def test_health_endpoints(self):
-        """Test basic health and root endpoints"""
-        print("\n" + "="*50)
-        print("TESTING HEALTH ENDPOINTS")
-        print("="*50)
-        
-        self.run_test("API Root", "GET", "", 200)
-        self.run_test("Health Check", "GET", "health", 200)
+    def test_api_root(self):
+        """Test API root endpoint"""
+        success, response = self.run_test(
+            "API Root Info",
+            "GET",
+            "",
+            200
+        )
+        return success
 
-    def test_metrics_endpoints(self):
-        """Test metrics CRUD operations"""
-        print("\n" + "="*50)
-        print("TESTING METRICS ENDPOINTS")
-        print("="*50)
-        
-        # Get all metrics
-        success, metrics = self.run_test("Get All Metrics", "GET", "metrics", 200)
-        
-        # Get metrics by category
-        self.run_test("Get Revenue Metrics", "GET", "metrics?category=revenue", 200)
-        self.run_test("Get Customer Metrics", "GET", "metrics?category=customer", 200)
-        
-        # Create a new metric
-        test_metric = {
-            "name": "Test Metric",
-            "value": 1000,
-            "category": "test",
-            "trend": 5.5,
-            "period": "monthly",
-            "date": "2024-12"
-        }
-        success, created_metric = self.run_test("Create Metric", "POST", "metrics", 201, test_metric)
-        
-        # Delete the test metric if created
-        if success and created_metric.get('id'):
-            self.run_test("Delete Test Metric", "DELETE", f"metrics/{created_metric['id']}", 200)
+    def test_health_check(self):
+        """Test health check endpoint"""
+        success, response = self.run_test(
+            "Health Check",
+            "GET",
+            "health",
+            200
+        )
+        return success
 
-    def test_timeseries_endpoints(self):
-        """Test time series data endpoints"""
-        print("\n" + "="*50)
-        print("TESTING TIMESERIES ENDPOINTS")
-        print("="*50)
-        
-        self.run_test("Get Timeseries Data", "GET", "timeseries", 200)
-        self.run_test("Seed Timeseries Data", "POST", "timeseries/seed", 200)
+    def test_kpi_definitions(self):
+        """Test KPI definitions endpoint"""
+        success, response = self.run_test(
+            "KPI Definitions",
+            "GET",
+            "kpi-definitions",
+            200
+        )
+        if success and isinstance(response, dict):
+            print(f"   KPI definitions available: {len(response)} definitions")
+        return success
 
-    def test_customer_segments_endpoints(self):
-        """Test customer segments endpoints"""
-        print("\n" + "="*50)
-        print("TESTING CUSTOMER SEGMENTS ENDPOINTS")
-        print("="*50)
-        
-        self.run_test("Get Customer Segments", "GET", "customer-segments", 200)
+    def test_load_sample_data(self):
+        """Test loading sample data"""
+        success, response = self.run_test(
+            "Load Sample Data",
+            "POST",
+            "sample-data",
+            200
+        )
+        if success and isinstance(response, dict):
+            self.sample_run_id = response.get('run_id')
+            print(f"   Sample run ID: {self.sample_run_id}")
+            print(f"   Run name: {response.get('name')}")
+        return success
 
-    def test_business_framing_endpoints(self):
-        """Test business framing CRUD operations"""
-        print("\n" + "="*50)
-        print("TESTING BUSINESS FRAMING ENDPOINTS")
-        print("="*50)
-        
-        # Get all business framing
-        self.run_test("Get Business Framing", "GET", "business-framing", 200)
-        
-        # Create business framing
-        test_framing = {
-            "stakeholder": "Test CFO",
-            "business_question": "How to improve test metrics?",
-            "decision_impact": "Test budget allocation",
-            "data_sources": ["Test data", "Sample metrics"],
-            "success_criteria": "10% improvement in test KPIs"
-        }
-        success, created_framing = self.run_test("Create Business Framing", "POST", "business-framing", 201, test_framing)
-        
-        # Delete the test framing if created
-        if success and created_framing.get('id'):
-            self.run_test("Delete Test Business Framing", "DELETE", f"business-framing/{created_framing['id']}", 200)
+    def test_list_runs(self):
+        """Test listing analysis runs"""
+        success, response = self.run_test(
+            "List Analysis Runs",
+            "GET",
+            "runs",
+            200
+        )
+        if success and isinstance(response, list):
+            print(f"   Found {len(response)} analysis runs")
+            if response:
+                print(f"   Latest run: {response[0].get('name', 'Unknown')}")
+        return success
 
-    def test_insights_endpoints(self):
-        """Test AI insights endpoints (UI functionality only)"""
-        print("\n" + "="*50)
-        print("TESTING AI INSIGHTS ENDPOINTS")
-        print("="*50)
-        
-        # Get insights history
-        self.run_test("Get Insights History", "GET", "insights/history", 200)
-        
-        # Test insights generation (this will test the endpoint but may fail due to AI integration)
-        test_insight_request = {
-            "context": "Test context for analytics",
-            "metrics_summary": {
-                "Total Revenue": {"value": 2450000, "trend": 12.5, "category": "revenue"},
-                "Net Income": {"value": 555000, "trend": 15.7, "category": "revenue"}
-            },
-            "question": "What are the key insights from this test data?"
-        }
-        
-        print("\n🔍 Testing AI Insights Generation...")
-        print("   Note: This may take longer due to AI processing")
-        success, insight = self.run_test("Generate AI Insights", "POST", "insights/generate", 200, test_insight_request, timeout=60)
-        
-        if not success:
-            print("   ⚠️  AI Insights generation failed - this may be due to API key or network issues")
-
-    def test_export_endpoints(self):
-        """Test PDF export functionality"""
-        print("\n" + "="*50)
-        print("TESTING EXPORT ENDPOINTS")
-        print("="*50)
-        
-        # Test PDF export
-        export_data = {
-            "businessFraming": {
-                "stakeholder": "Test CFO",
-                "business_question": "Test question",
-                "decision_impact": "Test impact"
-            },
-            "metrics": [
-                {"name": "Test Revenue", "value": 1000000, "trend": 5.0},
-                {"name": "Test Profit", "value": 200000, "trend": 3.2}
-            ],
-            "insights": {
-                "executive_summary": "Test executive summary for PDF export",
-                "key_findings": ["Test finding 1", "Test finding 2"],
-                "recommendations": ["Test recommendation 1", "Test recommendation 2"]
-            }
-        }
-        
-        print("\n🔍 Testing PDF Export...")
-        try:
-            url = f"{self.api_url}/export/pdf"
-            response = requests.post(url, json=export_data, headers={'Content-Type': 'application/json'}, timeout=30)
+    def test_get_run_details(self):
+        """Test getting specific run details"""
+        if not self.sample_run_id:
+            print("❌ Skipped - No sample run ID available")
+            return False
             
-            if response.status_code == 200 and response.headers.get('content-type') == 'application/pdf':
-                print("✅ Passed - PDF Export successful")
-                print(f"   PDF size: {len(response.content)} bytes")
-                self.tests_passed += 1
-            else:
-                print(f"❌ Failed - Expected PDF, got status {response.status_code}")
-                self.failed_tests.append({
-                    'name': 'PDF Export',
-                    'expected': 'PDF response',
-                    'actual': f'Status {response.status_code}',
-                    'endpoint': 'export/pdf'
-                })
-            self.tests_run += 1
-        except Exception as e:
-            print(f"❌ Failed - Error: {str(e)}")
-            self.failed_tests.append({
-                'name': 'PDF Export',
-                'error': str(e),
-                'endpoint': 'export/pdf'
-            })
-            self.tests_run += 1
+        success, response = self.run_test(
+            "Get Run Details",
+            "GET",
+            f"runs/{self.sample_run_id}",
+            200
+        )
+        if success and isinstance(response, dict):
+            print(f"   Periods: {len(response.get('periods', []))}")
+            print(f"   KPIs: {len(response.get('kpis', []))}")
+            print(f"   Variances: {len(response.get('variances', []))}")
+            print(f"   Forecasts: {len(response.get('forecasts', {}))}")
+        return success
 
-    def test_dataset_endpoints(self):
-        """Test dataset management endpoints"""
-        print("\n" + "="*50)
-        print("TESTING DATASET ENDPOINTS")
-        print("="*50)
-        
-        # Get all datasets
-        self.run_test("Get All Datasets", "GET", "datasets", 200)
-        
-        # Upload a test dataset
-        test_dataset = {
-            "name": "Test Dataset",
-            "description": "Test dataset for API testing",
-            "data": [
-                {"metric": "test_revenue", "value": 100000},
-                {"metric": "test_profit", "value": 20000}
-            ]
+    def test_get_kpis(self):
+        """Test getting KPIs for a run"""
+        if not self.sample_run_id:
+            print("❌ Skipped - No sample run ID available")
+            return False
+            
+        success, response = self.run_test(
+            "Get Run KPIs",
+            "GET",
+            f"runs/{self.sample_run_id}/kpis",
+            200
+        )
+        if success and isinstance(response, list):
+            print(f"   KPI periods: {len(response)}")
+            if response:
+                latest_kpi = response[-1]
+                print(f"   Latest period: {latest_kpi.get('period')}")
+                print(f"   Revenue: ${latest_kpi.get('revenue', 0):,.0f}")
+                print(f"   Gross Margin: {latest_kpi.get('gross_margin', 0):.1f}%")
+        return success
+
+    def test_get_variances(self):
+        """Test getting variance analysis for a run"""
+        if not self.sample_run_id:
+            print("❌ Skipped - No sample run ID available")
+            return False
+            
+        success, response = self.run_test(
+            "Get Variance Analysis",
+            "GET",
+            f"runs/{self.sample_run_id}/variances",
+            200
+        )
+        if success and isinstance(response, list):
+            print(f"   Variance metrics: {len(response)}")
+            if response:
+                favorable = sum(1 for v in response if v.get('status') == 'Favorable')
+                print(f"   Favorable variances: {favorable}/{len(response)}")
+        return success
+
+    def test_get_forecasts(self):
+        """Test getting forecast scenarios for a run"""
+        if not self.sample_run_id:
+            print("❌ Skipped - No sample run ID available")
+            return False
+            
+        success, response = self.run_test(
+            "Get Forecast Scenarios",
+            "GET",
+            f"runs/{self.sample_run_id}/forecasts",
+            200
+        )
+        if success and isinstance(response, dict):
+            scenarios = list(response.keys())
+            print(f"   Available scenarios: {scenarios}")
+            if 'base' in response:
+                base_periods = len(response['base'].get('periods', []))
+                print(f"   Base scenario periods: {base_periods}")
+        return success
+
+    def test_generate_narrative(self):
+        """Test AI narrative generation"""
+        if not self.sample_run_id:
+            print("❌ Skipped - No sample run ID available")
+            return False
+            
+        narrative_data = {
+            "run_id": self.sample_run_id,
+            "focus": "executive_summary"
         }
-        success, uploaded = self.run_test("Upload Dataset", "POST", "datasets/upload", 200, test_dataset)
         
-        # Get specific dataset if upload succeeded
-        if success and uploaded.get('id'):
-            self.run_test("Get Specific Dataset", "GET", f"datasets/{uploaded['id']}", 200)
+        success, response = self.run_test(
+            "Generate AI Narrative",
+            "POST",
+            f"runs/{self.sample_run_id}/narrative",
+            200,
+            data=narrative_data
+        )
+        if success and isinstance(response, dict):
+            print(f"   Narrative ID: {response.get('narrative_id')}")
+            print(f"   Summary length: {len(response.get('summary', ''))}")
+            print(f"   Key insights: {len(response.get('key_insights', []))}")
+            print(f"   Recommendations: {len(response.get('recommendations', []))}")
+        return success
 
-    def test_seed_data_endpoint(self):
-        """Test seed data functionality"""
-        print("\n" + "="*50)
-        print("TESTING SEED DATA ENDPOINT")
-        print("="*50)
-        
-        self.run_test("Seed All Sample Data", "POST", "seed-data", 200)
-
-    def run_all_tests(self):
-        """Run all API tests"""
-        print("🚀 Starting Data Analytics API Tests")
-        print(f"Testing against: {self.base_url}")
-        
-        # Run all test suites
-        self.test_health_endpoints()
-        self.test_seed_data_endpoint()  # Seed data first to ensure we have test data
-        self.test_metrics_endpoints()
-        self.test_timeseries_endpoints()
-        self.test_customer_segments_endpoints()
-        self.test_business_framing_endpoints()
-        self.test_dataset_endpoints()
-        self.test_export_endpoints()
-        self.test_insights_endpoints()  # Test AI insights last as it may be slower
-        
-        # Print final results
-        print("\n" + "="*60)
-        print("FINAL TEST RESULTS")
-        print("="*60)
-        print(f"📊 Tests passed: {self.tests_passed}/{self.tests_run}")
-        print(f"✅ Success rate: {(self.tests_passed/self.tests_run*100):.1f}%")
-        
-        if self.failed_tests:
-            print(f"\n❌ Failed tests ({len(self.failed_tests)}):")
-            for test in self.failed_tests:
-                error_msg = test.get('error', f"Expected {test.get('expected')}, got {test.get('actual')}")
-                print(f"   • {test['name']}: {error_msg}")
-        
-        return self.tests_passed == self.tests_run
+    def test_get_narratives(self):
+        """Test getting all narratives for a run"""
+        if not self.sample_run_id:
+            print("❌ Skipped - No sample run ID available")
+            return False
+            
+        success, response = self.run_test(
+            "Get Run Narratives",
+            "GET",
+            f"runs/{self.sample_run_id}/narratives",
+            200
+        )
+        if success and isinstance(response, list):
+            print(f"   Total narratives: {len(response)}")
+        return success
 
 def main():
-    tester = DataAnalyticsAPITester()
-    success = tester.run_all_tests()
-    return 0 if success else 1
+    """Run all tests"""
+    print("=" * 70)
+    print("Financial Forecasting Dashboard - Backend API Tests")
+    print("=" * 70)
+    
+    tester = FinancialDashboardTester()
+    
+    # Test sequence
+    tests = [
+        ("API Root", tester.test_api_root),
+        ("Health Check", tester.test_health_check),
+        ("KPI Definitions", tester.test_kpi_definitions),
+        ("Load Sample Data", tester.test_load_sample_data),
+        ("List Runs", tester.test_list_runs),
+        ("Get Run Details", tester.test_get_run_details),
+        ("Get KPIs", tester.test_get_kpis),
+        ("Get Variances", tester.test_get_variances),
+        ("Get Forecasts", tester.test_get_forecasts),
+        ("Generate AI Narrative", tester.test_generate_narrative),
+        ("Get Narratives", tester.test_get_narratives),
+    ]
+    
+    print(f"\nRunning {len(tests)} tests...\n")
+    
+    for test_name, test_func in tests:
+        try:
+            test_func()
+        except Exception as e:
+            print(f"❌ {test_name} - Exception: {str(e)}")
+    
+    # Print summary
+    print("\n" + "=" * 70)
+    print("TEST SUMMARY")
+    print("=" * 70)
+    print(f"Tests Run: {tester.tests_run}")
+    print(f"Tests Passed: {tester.tests_passed}")
+    print(f"Success Rate: {(tester.tests_passed/tester.tests_run*100):.1f}%")
+    
+    if tester.tests_passed == tester.tests_run:
+        print("🎉 All tests passed!")
+        return 0
+    else:
+        print(f"⚠️  {tester.tests_run - tester.tests_passed} tests failed")
+        return 1
 
 if __name__ == "__main__":
     sys.exit(main())
