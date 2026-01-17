@@ -1,57 +1,83 @@
-# Data Analytics Portfolio - PRD
+# Financial Forecasting & KPI Dashboard - PRD
 
 ## Original Problem Statement
-Build a Data Analytics Portfolio Project with 4 phases:
-1. Business Framing (stakeholder, business question, decision impact)
-2. Data & Analysis (clean data, metrics, validate assumptions)
-3. AI Integration (executive summaries, plain English insights, recommendations)
-4. Presentation (Dashboard, Executive memo PDF)
+Build an AI-Enhanced Financial Forecasting & KPI Storytelling Dashboard that helps finance leaders understand:
+1. What happened (KPI dashboards)
+2. Why it happened (Variance analysis)
+3. What to do next (AI-generated recommendations)
 
-## User Choices
-- Domain: Financial Analytics with E-commerce/Customer Analytics overlay
-- LLM: OpenAI GPT-5.2 with Emergent LLM key
-- Dashboard: Interactive charts + KPI summary cards
-- Design: Light theme, enterprise-style, professional
-- PDF: AI-generated summaries + recommendations
+Target Users: CFO, VP Finance, FP&A Manager, Business Unit Leaders
 
 ## User Personas
-1. **Hiring Managers** - Reviewing technical/business skills of candidates
-2. **Executives/CFOs** - Need quick executive summaries and KPIs
-3. **Business Analysts** - Deep dive into financial/customer data
+1. **CFO** - Needs board-ready insights, strategic overview
+2. **VP Finance** - Performance monitoring, variance explanations
+3. **FP&A Manager** - Forecasting, variance analysis, reporting
+4. **Business Analyst** - Data upload, KPI interpretation, report generation
 
 ## Core Requirements
-- [x] Executive Dashboard with KPI cards
-- [x] Financial Analytics with filtering
-- [x] Customer Analytics with segmentation
-- [x] AI-powered insights via GPT-5.2
-- [x] Business Framing framework
-- [x] PDF Report Export
-- [x] Data Management/Upload
+- [x] CSV data upload (monthly financials)
+- [x] Server-side KPI calculations (documented formulas)
+- [x] Variance analysis with favorable/unfavorable classification
+- [x] Forecast scenarios (Base, Upside, Downside, Stress)
+- [x] AI narrative generation via GPT-5.2
+- [x] Executive-friendly UI (clean, readable, CFO-ready)
+- [x] MongoDB persistence for runs and narratives
 
 ## What's Been Implemented (Jan 2025)
-- Full-stack dashboard with 6 pages
-- FastAPI backend with MongoDB
-- GPT-5.2 integration via Emergent
-- Interactive Recharts visualizations
-- PDF generation with ReportLab
-- Sample data seeding
-- Business framing CRUD
+
+### Backend (FastAPI)
+- Data upload endpoint with CSV parsing
+- KPI calculation engine (15+ metrics)
+- Variance analysis engine
+- Forecast scenario generator
+- AI narrative engine (GPT-5.2 via Emergent)
+- KPI definitions endpoint
+- Full CRUD for analysis runs
+
+### Frontend (React)
+- Dashboard with KPI cards
+- Period and scenario selectors
+- Trend charts (Revenue, Margins)
+- Variance analysis table
+- Forecast scenario view
+- AI narrative panel with focus selector
+
+### Documentation
+- Professional README (recruiter-friendly)
+- KPI definitions reference
+- Architecture overview
+- Sample AI outputs
+
+## KPIs Calculated
+- Revenue & Growth (MoM, YoY)
+- Gross Margin, Operating Margin, Net Margin
+- EBITDA, OpEx Ratio
+- Revenue per Employee, ARPU
+- Current Ratio, Quick Ratio
+- Cash Runway, Debt-to-Equity
+
+## Testing Results
+- Backend: 100% (11/11 tests passed)
+- Frontend: 95% (all major functionality working)
+- AI Narrative: Generating executive-quality insights
+
+## Prioritized Backlog
+
+### P0 (Complete)
+- CSV upload, KPI calculations, variance analysis
+- Forecast scenarios, AI narratives
+
+### P1 (Next)
+- Budget vs Actual variance (in addition to MoM)
+- CSV template download
+- Export to PDF/Excel
+
+### P2 (Future)
+- Multiple company comparison
+- Custom KPI definitions
+- Scheduled report generation
 
 ## Architecture
 - Backend: FastAPI + MongoDB + Emergent LLM
-- Frontend: React + Tailwind + Shadcn/UI + Recharts
-- Design: Swiss Enterprise Light theme (Manrope + Inter fonts)
-
-## Prioritized Backlog
-### P0 (Complete)
-- Dashboard, charts, KPIs, AI insights, PDF export
-
-### P1 (Next)
-- Demo video recording capability
-- Custom data CSV import
-- More chart types
-
-### P2 (Future)
-- User authentication
-- Saved report templates
-- Email report delivery
+- Frontend: React + Tailwind + Recharts
+- AI: OpenAI GPT-5.2 (narrative only, not calculations)
