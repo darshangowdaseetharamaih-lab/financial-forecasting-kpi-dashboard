@@ -1,34 +1,81 @@
-.App-logo {
-    height: 40vmin;
-    pointer-events: none;
+/* App-specific styles */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 1.5rem;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-    .App-logo {
-        animation: App-logo-spin infinite 20s linear;
+@media (min-width: 768px) {
+    .dashboard-grid {
+        grid-template-columns: repeat(3, 1fr);
     }
 }
 
-.App-header {
-    background-color: #0f0f10;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
-    color: white;
+@media (min-width: 1024px) {
+    .dashboard-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
 }
 
-.App-link {
-    color: #61dafb;
+.metric-card {
+    @apply bg-white border border-slate-200 rounded-lg p-6 transition-all duration-200;
 }
 
-@keyframes App-logo-spin {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
+.metric-card:hover {
+    @apply shadow-md border-slate-300;
+}
+
+.chart-container {
+    @apply bg-white border border-slate-200 rounded-lg p-6;
+}
+
+.sidebar-link {
+    @apply flex items-center gap-3 px-4 py-2.5 text-slate-600 rounded-md transition-colors;
+}
+
+.sidebar-link:hover {
+    @apply bg-slate-100 text-slate-900;
+}
+
+.sidebar-link.active {
+    @apply bg-slate-900 text-white;
+}
+
+.ai-insight-card {
+    @apply bg-gradient-to-br from-blue-50 to-indigo-50 border border-blue-200 rounded-lg p-6;
+    position: relative;
+    overflow: hidden;
+}
+
+.ai-insight-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #2563eb, #6366f1, #8b5cf6);
+}
+
+/* Trend indicators */
+.trend-positive {
+    @apply text-emerald-600 bg-emerald-50;
+}
+
+.trend-negative {
+    @apply text-red-600 bg-red-50;
+}
+
+/* Loading states */
+.skeleton {
+    @apply bg-slate-200 animate-pulse rounded;
+}
+
+/* Tooltip customization for recharts */
+.recharts-tooltip-wrapper {
+    outline: none !important;
+}
+
+.custom-tooltip {
+    @apply bg-white shadow-xl border border-slate-100 rounded-lg p-3;
 }
