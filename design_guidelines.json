@@ -1,0 +1,141 @@
+{
+  "project_name": "Data Analytics Portfolio - Financial & Customer Intelligence",
+  "design_philosophy": {
+    "identity": "E1: The Anti-AI Designer",
+    "core_principles": [
+      "Fusion over Imitation: Mix Swiss Print Design with SaaS Utility.",
+      "Content is King: Data is the hero. Every pixel must serve the metric.",
+      "Density with Breath: High information density (for execs) balanced by generous padding (for focus).",
+      "Color is Function: 95% Monochrome, 5% Signal Color."
+    ],
+    "anti_patterns": [
+      "No Purple/Teal gradients (unless specific data category).",
+      "No Center-Everything layouts.",
+      "No 'Default Vercel' look - customize the Shadcn radius and shadows."
+    ]
+  },
+  "typography": {
+    "font_family": {
+      "headings": "Manrope, sans-serif",
+      "body": "Inter, sans-serif",
+      "mono": "JetBrains Mono, monospace"
+    },
+    "installation": "Import via Google Fonts in index.css: @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap');",
+    "usage_rules": {
+      "headings": "font-manrope font-bold tracking-tight text-slate-900",
+      "body": "font-sans text-slate-600 leading-relaxed",
+      "data_values": "font-mono font-medium tracking-tight text-slate-900",
+      "captions": "font-sans text-xs text-slate-500 uppercase tracking-wider"
+    }
+  },
+  "colors": {
+    "theme": "light",
+    "palette": {
+      "primary": "#0F172A",
+      "secondary": "#F1F5F9",
+      "accent": "#2563EB",
+      "background": "#FFFFFF",
+      "surface": "#F8FAFC",
+      "border": "#E2E8F0",
+      "success": "#10B981",
+      "warning": "#F59E0B",
+      "error": "#EF4444",
+      "text_primary": "#0F172A",
+      "text_secondary": "#64748B"
+    },
+    "usage": {
+      "primary_action": "bg-slate-900 text-white hover:bg-slate-800",
+      "secondary_action": "bg-white border border-slate-200 text-slate-900 hover:bg-slate-50",
+      "accent_element": "text-blue-600",
+      "positive_trend": "text-emerald-600 bg-emerald-50/50",
+      "negative_trend": "text-red-600 bg-red-50/50"
+    }
+  },
+  "layout_system": {
+    "spacing_scale": "Tailwind Default (p-4, p-6, p-8, p-12)",
+    "container_padding": "px-6 md:px-12 lg:px-24",
+    "grids": {
+      "dashboard_view": {
+        "type": "Bento Mode B (High Density)",
+        "classes": "grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6",
+        "rules": "Use col-span-2 or col-span-3 for main charts. Use col-span-1 for summary cards."
+      },
+      "landing_view": {
+        "type": "Bento Mode A (Tetris)",
+        "classes": "grid grid-cols-1 md:grid-cols-12 gap-8",
+        "rules": "Asymmetrical layout. Hero takes 8 cols. Supporting content takes 4 cols."
+      }
+    }
+  },
+  "components": {
+    "cards": {
+      "style": "bg-white border border-slate-200 rounded-lg shadow-sm hover:shadow-md transition-all duration-200",
+      "content_padding": "p-6"
+    },
+    "buttons": {
+      "primary": "h-10 px-4 py-2 bg-slate-900 text-white rounded-md hover:bg-slate-800 font-medium transition-colors",
+      "ghost": "h-10 px-4 py-2 hover:bg-slate-100 text-slate-700 rounded-md transition-colors"
+    },
+    "charts": {
+      "library": "Recharts (via Shadcn)",
+      "style": "Clean, minimal grid lines. Tooltips must have bg-white, shadow-lg, border-slate-100.",
+      "colors": ["#0F172A", "#2563EB", "#10B981", "#F59E0B", "#6366F1"]
+    },
+    "navigation": {
+      "sidebar": "w-64 bg-slate-50/50 border-r border-slate-200 h-screen sticky top-0",
+      "topbar": "h-16 border-b border-slate-200 bg-white/80 backdrop-blur-md sticky top-0 z-50"
+    }
+  },
+  "visual_enhancers": {
+    "glassmorphism": "backdrop-blur-xl bg-white/70 border-b border-white/20",
+    "gradients": "Subtle mesh gradients allowed ONLY in Hero backgrounds (Opacity < 10%). NO gradients on buttons.",
+    "shadows": "shadow-sm for cards, shadow-xl for floating elements (modals, dropdowns).",
+    "borders": "1px solid slate-200. Use slate-300 for active states."
+  },
+  "motion": {
+    "library": "framer-motion",
+    "transitions": {
+      "page_load": "initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }}",
+      "hover": "transition-transform duration-200 ease-out hover:-translate-y-1",
+      "list_stagger": "staggerChildren: 0.1"
+    }
+  },
+  "accessibility": {
+    "contrast": "Ensure text-slate-500 is only used for large text or non-critical labels. Use text-slate-600+ for body.",
+    "focus_states": "focus:ring-2 focus:ring-slate-900 focus:ring-offset-2",
+    "testing": "All interactive elements must have data-testid attributes."
+  },
+  "assets": {
+    "images": [
+      {
+        "category": "Business Context",
+        "url": "https://images.unsplash.com/photo-1758691736975-9f7f643d178e?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDQ2MzR8MHwxfHNlYXJjaHwxfHxkaXZlcnNlJTIwYnVzaW5lc3MlMjB0ZWFtJTIwbWVldGluZyUyMG1vZGVybiUyMG9mZmljZXxlbnwwfHx8fDE3Njg2MzQ5Mzh8MA&ixlib=rb-4.1.0&q=85",
+        "description": "Diverse business team meeting in modern office - Use for 'Business Framing' or 'About' section."
+      },
+      {
+        "category": "Office Environment",
+        "url": "https://images.unsplash.com/photo-1765371513492-264506c3ad09?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NTYxODh8MHwxfHNlYXJjaHwzfHxtb2Rlcm4lMjBvZmZpY2UlMjBhcmNoaXRlY3R1cmUlMjBtaW5pbWFsaXN0fGVufDB8fHx8MTc2ODYzNDkyMXww&ixlib=rb-4.1.0&q=85",
+        "description": "Modern office space with glass partition - Use for Login background or Hero section backdrop."
+      },
+      {
+        "category": "Collaboration",
+        "url": "https://images.unsplash.com/photo-1758873269317-51888e824b28?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDQ2MzR8MHwxfHNlYXJjaHwzfHxkaXZlcnNlJTIwYnVzaW5lc3MlMjB0ZWFtJTIwbWVldGluZyUyMG1vZGVybiUyMG9mZmljZXxlbnwwfHx8fDE3Njg2MzQ5Mzh8MA&ixlib=rb-4.1.0&q=85",
+        "description": "Team collaborating around a table - Use for 'Team' or 'Process' section."
+      }
+    ],
+    "icons": "Use lucide-react (default). For specialized finance icons, use @phosphor-icons/react (install if needed)."
+  },
+  "instructions_to_main_agent": [
+    "1. THEME ENFORCEMENT: The user requested a LIGHT theme. Do not use dark mode by default. Ensure index.css :root variables are optimized for a clean, white/slate palette.",
+    "2. COMPONENT CUSTOMIZATION: Do not use the default Shadcn 'radius-md' blindly. For this 'Enterprise' look, use slightly sharper corners (rounded-md or rounded-sm) for a more professional feel.",
+    "3. DATA DENSITY: In the Dashboard views, pack information densely but use whitespace (padding) inside the cards to prevent clutter. Follow the 'Bento Mode B' grid rules.",
+    "4. BUSINESS FRAMING: The 'Business Framing' phase is text-heavy. Use typography hierarchy (Manrope Bold vs Inter Regular) to make it readable. Do not just dump text blocks.",
+    "5. PDF EXPORT: Ensure the layout for the 'Executive Memo' is print-friendly (white background, high contrast, no scrollbars).",
+    "6. AI INTEGRATION: When displaying AI insights, use a distinct visual container (e.g., a card with a subtle 'magic' gradient border or icon) to differentiate it from raw data."
+  ],
+  "universal_guidelines": {
+    "avoid_ai_slop": "Do not use generic centered layouts. Create depth with z-index and shadows.",
+    "micro_interactions": "Every button and card must have a hover state.",
+    "testing": "Add data-testid to all interactive elements."
+  }
+}
