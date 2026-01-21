@@ -302,7 +302,7 @@ REACT_APP_BACKEND_URL=http://localhost:8001
 
 ## Author
 
-**[Your Name]**  
+**[Darshan Seetharamaiah]**  
 Business Analyst | Financial Analytics | AI Solutions
 
 ---
